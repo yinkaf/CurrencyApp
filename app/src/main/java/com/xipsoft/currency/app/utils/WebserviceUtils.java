@@ -32,10 +32,11 @@ public class WebServiceUtils {
                 LogUtils.log(TAG, "404 page not found!");
             } else if(statusCode != HttpURLConnection.HTTP_OK) {
                 LogUtils.log(TAG, "URL Response error :"+statusCode);
-            }
+            }else {
 
-            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-            return new JSONObject(convertInputStreamToSring(in));
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                return new JSONObject(convertInputStreamToSring(in));
+            }
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
